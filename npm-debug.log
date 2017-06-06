@@ -1,0 +1,20 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/lulu/.nvm/v0.10.32/bin/node',
+1 verbose cli   '/home/lulu/.nvm/v0.10.32/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose config Skipping project config: /home/lulu/.npmrc. (matches userconfig)
+5 error install Couldn't read dependencies
+6 error package.json ENOENT, open '/home/lulu/package.json'
+6 error package.json This is most likely not a problem with npm itself.
+6 error package.json npm can't find a package.json file in your current directory.
+7 error System Linux 4.8.0-53-generic
+8 error command "/home/lulu/.nvm/v0.10.32/bin/node" "/home/lulu/.nvm/v0.10.32/bin/npm" "install"
+9 error cwd /home/lulu/api
+10 error node -v v0.10.32
+11 error npm -v 1.4.28
+12 error path /home/lulu/package.json
+13 error code ENOPACKAGEJSON
+14 error errno 34
+15 verbose exit [ 34, true ]
