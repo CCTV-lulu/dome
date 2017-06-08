@@ -1,39 +1,68 @@
-/**
- * Created by lulu on 17-6-5.
- */
+
 var http=require('http')
 var express = require('express')
 var fs=require('fs')
 var unirest = require('unirest')
-var info = require('./info.json')
-var img = info.result.data[0].tmImg
-var lastimg = 'http://pic.tmkoo.com/pic.php?zch=' + img
-function test(cb) {
-    unirest.get('lastimg')
+
+var Stream = require('stream').Transform
+
+// var lastimg='http://pic.tmkoo.com/pic.php?zch='+info.result.data[0].tmImg
+
+
+function getjson(cd) {
+     unirest.get('http://japi.juhe.cn/trademark/search?keyword=1&pageSize=10&pageNo=1&key=ccc84a508ad6b49e52ba0618b8fc2e34')
         .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
-        .send({"parameter": 23, "foo": "bar"})
+        .send()
         .end(function (response) {
-            cb((response.body))
-        });
+           cd(response.body)
+        })
 }
-var hh=function(data){
-    console.log(data)
-}
-test(hh)
-var haha = function (data) {
-    fs.writeFile("out.jpg", data,function (err) {
-        if(err){
-            console.log(err)
-        }
+
+var json=function (info) {
+    console.log(JSON.parse(info))
+   var img=(JSON.parse(info)).result.data
+    console.log(img)
+   img.forEach(function (k){
+        var lastimg = 'http://pic.tmkoo.com/pic.php?zch=' + k.tmImg
+
+        http.request(lastimg, function(response) {
+            var imginfo = new Stream();
+
+            response.on('imginfo', function(chunk) {
+            imginfo.push(chunk)
+            })
+
+            response.on('end', function() {
+                fs.writeFile(k.tmImg+'.png', imginfo.read())
+                })
+
+        }).end()
     })
 }
-test(haha)
-var hehe = function (data) {
-    fs.writeFile("out.txt", data,function (err) {
-        if(err){
-            console.log(err)
-        }
-    })
-}
-test(hehe)
+getjson(json)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
