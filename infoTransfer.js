@@ -5,12 +5,12 @@ var unirest = require('unirest')
 var Stream = require('stream').Transform
 
 var parameter = {
-        'keyword':['e','f'] ,
-        'pageSize': 5,
+        'keyword':['a','b'] ,
+        'pageSize': 2,
         'pageNo': 1,
         'key': '89abb2115a1dc9df29da7f52746486db',
         'keyword_index':0,
-        'max_pageNo':2
+        'max_pageNo':3
     }
 
 if(fs.exists('ErrorFile.txt')){
@@ -37,6 +37,7 @@ function getJson(option, cb) {
         .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
         .send()
         .end(function (response) {
+            console.log( JSON.stringify(response.body))
             if (response.error) {
                 coverFile('ErrorFile', 'ErrorType:CallaFiled'+',keyword:' + option.keyword[option.keyword_index] + ',pageNo:' + option.pageNo)
             }
@@ -45,21 +46,30 @@ function getJson(option, cb) {
                     fs.mkdirSync('./trademarkInfo')
                 }
                 fs.appendFileSync('./requestFile.txt', '[keyword:' + option.keyword[option.keyword_index] + ',pageNo:' + option.pageNo+']')
-                var newResult = JSON.parse(response.body)
+                var newResult = response.body
                 if (newResult.error_code == 0) {
                     writeFile(option.keyword[option.keyword_index], newResult.result.data)
-                    if (newResult.result.data.length === option.pageSize && option.pageNo < option.max_pageNo) {
-                        option.pageNo += 1
-                        return getJson(option, cb)
+
+                    console.log( JSON.stringify(newResult.result)=='{}')
+                    if(JSON.stringify(newResult.result)!='{}') {
+                        if (newResult.result.data.length == option.pageSize && option.pageNo < option.max_pageNo) {
+                            console.log('===============')
+                            option.pageNo += 1
+                            return getJson(option, cb)
+                        }
+
+
+                        if (option.keyword_index < option.keyword.length - 1) {
+                            option.keyword_index += 1;
+                            option.pageNo = 1;
+                            return getJson(option, cb)
+                        }
+                    }else {
+                        option.keyword_index += 1;
+                            option.pageNo = 1;
+                            return getJson(option, cb)
                     }
-                    if (option.keyword_index<option.keyword.length-1){
-                        option.keyword_index+=1;
-                        option.pageNo=1;
-                        return getJson(option, cb)
-                    }
-                    else {
-                        cb()
-                    }
+                    cb()
                 }
                 else if (newResult.error_code == 10012) {
                     return coverFile('ErrorFile', 'ErrorType:HasNoMany'+',keyword:' + option.keyword[option.keyword_index] + ',pageNo:' + option.pageNo)
@@ -108,7 +118,7 @@ getJson(option, function () {
         var info =  readFile('trademarkInfo/'+i)
         if(info!=null) {
             JSON.parse(info).forEach(function (k) {
-                    if (k.tmImg!=undefined) {
+                    if (k!=null) {
                         var lastimg = 'http://pic.tmkoo.com/pic.php?zch=' + k.tmImg
                         http.request(lastimg, function (response) {
                             var data = new Stream();
@@ -127,4 +137,4 @@ getJson(option, function () {
         }
     })
 })
-// writeFile('1',['iijjjjhh'])
+
