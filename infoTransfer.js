@@ -46,7 +46,7 @@ function getJson(option, cb) {
                     fs.mkdirSync('./trademarkInfo')
                 }
                 fs.appendFileSync('./requestFile.txt', '[keyword:' + option.keyword[option.keyword_index] + ',pageNo:' + option.pageNo+']')
-                var newResult = response.body
+                var newResult = JSON.parse(response.body)
                 if (newResult.error_code == 0) {
                     writeFile(option.keyword[option.keyword_index], newResult.result.data)
 

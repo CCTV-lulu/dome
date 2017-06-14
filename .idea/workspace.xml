@@ -2,64 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf67702-4e61-4279-a7c5-2faac06b8ea5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/10112af4efbc64e7.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/2824e95565e45e60.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/6dc1bc6b10022702.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/7171064855e21051.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/950fba1f1bc5d2f3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/9607a487be0bfdc8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/970206590eb5bb68.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/b6c780810e79fd32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/ddb71796e0fb7faa.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/f6f1b87d91bb6524.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/3297400da187dc75.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/58af34400db5cf97.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/60f776cc845bff9b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/635edb9f51448889.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/6d5707b004793c81.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/75d42292f2777886.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/8ae69d8b73172b98.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/ddb71796e0fb7faa.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/f6f1b87d91bb6524.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/c/fd90a3a4b74b6be3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/0e75bba70892da0b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/1a81984196e2cc78.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/27298cda8e440ae5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/398f8a7d40fbec7f.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/5f0ed5d4eeba2ee6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/6dc1bc6b10022702.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/8ae69d8b73172b98.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/b24e186d58235453.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/c916a043bfd4f197.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/d/d8ed3c8de027ebe5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/60f776cc845bff9b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/6dc1bc6b10022702.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/91d861db5c9013a4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/950fba1f1bc5d2f3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/970206590eb5bb68.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/c4958683977b7a98.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/f4d8ec13f23c89b1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/f6f1b87d91bb6524.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/f9bc01eadb3a107b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e/fea483ec5b53a57a.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/11ea45edbef7c75b.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/18b8b0d4e65652c8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/2824e95565e45e60.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/5100f99bc8d28d33.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/5f0ed5d4eeba2ee6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/635edb9f51448889.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/950fba1f1bc5d2f3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/96a6d3fa02ae01eb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/994effdeb6c838e6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/f/f000dc354d0979d0.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trademarkInfo/a.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trademarkInfo/c.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trademarkInfo/d.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trademarkInfo/e.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trademarkInfo/f.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/infoTransfer.js" afterPath="$PROJECT_DIR$/infoTransfer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requestFile.txt" afterPath="$PROJECT_DIR$/requestFile.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,8 +17,8 @@
       <file leaf-file-name="infoTransfer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/infoTransfer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="540">
+              <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -509,8 +452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/infoTransfer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
           <folding />
         </state>
       </provider>
