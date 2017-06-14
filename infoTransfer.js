@@ -5,7 +5,7 @@ var unirest = require('unirest')
 var Stream = require('stream').Transform
 
 var parameter = {
-        'keyword':['a','b'] ,
+        'keyword':['a','b','c'] ,
         'pageSize': 2,
         'pageNo': 1,
         'key': '89abb2115a1dc9df29da7f52746486db',
@@ -64,7 +64,7 @@ function getJson(option, cb) {
                             option.pageNo = 1;
                             return getJson(option, cb)
                         }
-                    }else {
+                    }else if (option.keyword_index < option.keyword.length - 1){
                         option.keyword_index += 1;
                             option.pageNo = 1;
                             return getJson(option, cb)
