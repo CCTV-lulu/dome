@@ -5,22 +5,24 @@ var unirest = require('unirest')
 var Stream = require('stream').Transform
 
 var parameter = {
-        'keywork':['j','i'] ,
+        'keyword':['e','f'] ,
         'pageSize': 5,
         'pageNo': 1,
         'key': '89abb2115a1dc9df29da7f52746486db',
-        'keyword_index':0
+        'keyword_index':0,
+        'max_pageNo':2
     }
 
-if(fs.exists('没钱了.txt')){
-    var data=readFile('没钱了')
+if(fs.exists('ErrorFile.txt')){
+    var data=readFile('ErrorFile')
     var seat=data.split(',')
     option={
-        'keywork':seat[0].split(':')[1],
+        'keyword':seat[1].split(':')[1],
         'pageSize': parameter.pageSize,
-        'pageNo': seat[1].split(':')[1],
+        'pageNo': seat[2].split(':')[1],
         'key': parameter.key,
-        'keyword_index':0
+        'keyword_index':0,
+        'max_pageNo':1
     }
 }else {
     option=parameter
@@ -28,7 +30,7 @@ if(fs.exists('没钱了.txt')){
 
 function getJson(option, cb) {
     var url = 'http://japi.juhe.cn/trademark/search?keyword='
-        + option.keywork[option.keyword_index] + '&pageSize=' + option.pageSize +
+        + option.keyword[option.keyword_index] + '&pageSize=' + option.pageSize +
         '&pageNo=' + option.pageNo + '&key=' + option.key
 
     unirest.get(url)
@@ -36,18 +38,21 @@ function getJson(option, cb) {
         .send()
         .end(function (response) {
             if (response.error) {
-                writeFile('调用失败', 'keyword:' + option.keywork[option.keyword_index] + ',pageNo:' + option.pageNo)
+                coverFile('ErrorFile', 'ErrorType:CallaFiled'+',keyword:' + option.keyword[option.keyword_index] + ',pageNo:' + option.pageNo)
             }
             else {
-                writeFile('请求', 'keyword:' + option.keywork[option.keyword_index] + ',pageNo:' + option.pageNo)
+                if(!fs.existsSync('./trademarkInfo')){
+                    fs.mkdirSync('./trademarkInfo')
+                }
+                fs.appendFileSync('./requestFile.txt', '[keyword:' + option.keyword[option.keyword_index] + ',pageNo:' + option.pageNo+']')
                 var newResult = JSON.parse(response.body)
                 if (newResult.error_code == 0) {
-                    writeFile(option.keywork[option.keyword_index], JSON.stringify(newResult.result.data))
-                    if (newResult.result.data.length === option.pageSize && option.pageNo < 1) {
+                    writeFile(option.keyword[option.keyword_index], newResult.result.data)
+                    if (newResult.result.data.length === option.pageSize && option.pageNo < option.max_pageNo) {
                         option.pageNo += 1
                         return getJson(option, cb)
                     }
-                    if (option.keyword_index<option.keywork.length-1){
+                    if (option.keyword_index<option.keyword.length-1){
                         option.keyword_index+=1;
                         option.pageNo=1;
                         return getJson(option, cb)
@@ -57,7 +62,7 @@ function getJson(option, cb) {
                     }
                 }
                 else if (newResult.error_code == 10012) {
-                    return coverFile('没钱了', 'keyword:' + option.keywork[option.keyword_index] + ',pageNo:' + option.pageNo)
+                    return coverFile('ErrorFile', 'ErrorType:HasNoMany'+',keyword:' + option.keyword[option.keyword_index] + ',pageNo:' + option.pageNo)
                 }
 
             }
@@ -65,11 +70,13 @@ function getJson(option, cb) {
 }
 
 function writeFile(keyword, data) {
-    var txt_info =  readFile(keyword);
+    var txt_info =  readFile('trademarkInfo/'+keyword);
     if (txt_info == null) {
-        fs.appendFileSync('./' + keyword + '.txt', data)
+        fs.writeFileSync('./trademarkInfo/' + keyword + '.txt',JSON.stringify(data))
     } else {
-        fs.appendFileSync('./' + keyword + '.txt', '*' + data)
+        var result=JSON.parse(txt_info).concat(data)
+         // fs.unlinkSync('./trademarkInfo/' + keyword + '.txt')
+         fs.writeFileSync('./trademarkInfo/' + keyword + '.txt',JSON.stringify(result))
     }
 }
 
@@ -94,17 +101,13 @@ function coverFile(keyword,data) {
 }
 
 getJson(option, function () {
-    option.keywork.forEach(function (i) {
+    option.keyword.forEach(function (i) {
         if(!fs.existsSync('./'+i)){
             fs.mkdirSync(i)
         }
-        var info =  readFile(i)
+        var info =  readFile('trademarkInfo/'+i)
         if(info!=null) {
-            var newImg = []
-            newImg = info.split('*')
-            newImg.forEach(function (a) {
-                var datainfo = JSON.parse(a)
-                datainfo.forEach(function (k) {
+            JSON.parse(info).forEach(function (k) {
                     if (k.tmImg!=undefined) {
                         var lastimg = 'http://pic.tmkoo.com/pic.php?zch=' + k.tmImg
                         http.request(lastimg, function (response) {
@@ -120,9 +123,8 @@ getJson(option, function () {
 
                         }).end()
                     }
-                })
             })
         }
     })
 })
-
+// writeFile('1',['iijjjjhh'])
